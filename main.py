@@ -16,7 +16,7 @@ matches = {}
 # =====================
 class ChallengeView(discord.ui.View):
     def __init__(self, p1, p2, channel_id):
-        super().__init__(timeout=60)
+        super().__init__(timeout=None)
         self.p1 = p1
         self.p2 = p2
         self.channel_id = channel_id
@@ -87,7 +87,7 @@ class ChallengeView(discord.ui.View):
 # =====================
 class NumberSelectView(discord.ui.View):
     def __init__(self, player, match):
-        super().__init__(timeout=180)
+        super().__init__(timeout=None)
         self.player = player
         self.match = match
 

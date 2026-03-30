@@ -401,12 +401,10 @@ async def resolve_round(match):
             winner = p2
         else:
             await channel.send("🤝 *The blood tax claims both equally... neither stands victorious. A draw!*")
-            del matches[channel_id]
-            return
+            matches.pop(channel_id, None)
 
         await channel.send(f"🏆 {winner.mention} hath vanquished their foe by knockout! The blood tax is satisfied.")
-        del matches[channel_id]
-        return
+        matches.pop(channel_id, None)
 
     # Check 10 rounds end
     if match["round"] >= 10:
@@ -418,12 +416,10 @@ async def resolve_round(match):
             result_text = "hath endured more greatly — victory by blood remaining!"
         else:
             await channel.send("🤝 *Ten rounds hath passed and neither soul prevails... The blood tax ends in a draw!*")
-            del matches[channel_id]
-            return
+            matches.pop(channel_id, None)
 
         await channel.send(f"🏆 {winner.mention} {result_text}")
-        del matches[channel_id]
-        return
+        matches.pop(channel_id, None)
 
     match["round"] += 1
     await next_round(channel_id)
